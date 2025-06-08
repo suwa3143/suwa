@@ -68,7 +68,7 @@ public class Qes1_13 {
         float floatVal = 0.0f;
         double doubleVal = 0.0d;
         char charVal = '\u0000';
-        String stringVal = "null";
+        String stringVal = null;
         boolean booleanVal = false;
     }
 
