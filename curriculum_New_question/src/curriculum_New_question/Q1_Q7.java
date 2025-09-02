@@ -8,15 +8,13 @@ public class Q1_Q7 {
     // Q1：文字列と整数を受け取って出力するメソッド
     // ==============================
     public static void printHello(String text, int number) {
-        // 文字列と数字を組み合わせて出力
         System.out.println(text + " " + number);
     }
 
     // ==============================
-    // Q2：2つの整数を掛け算して出力するメソッド
+    // Q2：整数2つを掛け算して出力するメソッド
     // ==============================
     public static void multiply(int a, int b) {
-        // 掛け算の結果を表示
         System.out.println(a * b);
     }
 
@@ -24,7 +22,6 @@ public class Q1_Q7 {
     // Q3：整数の配列を受け取り、順番に出力するメソッド
     // ==============================
     public static void printArray(int[] arr) {
-        // 拡張for文で配列の中身を1つずつ表示
         for (int num : arr) {
             System.out.println(num);
         }
@@ -32,10 +29,9 @@ public class Q1_Q7 {
 
     // ==============================
     // Q4：小数2つを受け取り、足し算して出力するメソッド
-    //      （Q2のオーバーロード）
+    //      （Q2と同じ名前 multiply を使ってオーバーロード）
     // ==============================
-    public static void add(double a, double b) {
-        // 足し算の結果を表示
+    public static void multiply(double a, double b) {
         System.out.println(a + b);
     }
 
@@ -44,19 +40,19 @@ public class Q1_Q7 {
     //      配列に格納 → 出力 → 最後に配列を返す
     // ==============================
     public static int[] generateRandomNumbers(int count) {
-        Random rand = new Random();          // ランダム生成のためのクラス
-        int[] nums = new int[count];         // 戻り値用の配列を作成
+        Random rand = new Random();
+        int[] nums = new int[count];
 
         for (int i = 0; i < count; i++) {
             int randomNum;
             do {
-                randomNum = rand.nextInt(100) + 1; // 1〜100の乱数を生成
-            } while (randomNum == 0); // 0は使わない（課題の条件）
+                randomNum = rand.nextInt(100) + 1; // 1〜100の乱数
+            } while (randomNum == 0);
 
-            nums[i] = randomNum; // 配列に格納
-            System.out.println(randomNum); // 生成した値を出力
+            nums[i] = randomNum;
+            System.out.println(randomNum);
         }
-        return nums; // 配列を返す
+        return nums;
     }
 
     // ==============================
@@ -65,38 +61,38 @@ public class Q1_Q7 {
     public static double calcAverage(int[] nums) {
         int sum = 0;
         for (int num : nums) {
-            sum += num; // 配列の合計を計算
+            sum += num;
         }
-        double avg = (double) sum / nums.length; // 平均値を算出
-        System.out.println("平均値: " + avg); // 平均値を出力
-        return avg; // 平均値を返す
+        double avg = (double) sum / nums.length;
+        System.out.println("平均値: " + avg);
+        return avg;
     }
 
     // ==============================
     // Q7：平均値を受け取り、50以上ならtrue、それ以外はfalseを返す
     // ==============================
     public static boolean checkAbove50(double value) {
-        boolean result = value >= 50; // 50以上かどうか判定
-        System.out.println(result);   // 結果を表示
-        return result;                // 結果を返す
+        boolean result = value >= 50;
+        System.out.println(result);
+        return result;
     }
 
     // ==============================
-    // mainメソッド：上記で作ったメソッドを実際に呼び出す部分
+    // mainメソッド：メソッドの呼び出しテスト
     // ==============================
     public static void main(String[] args) {
         // Q1の実行
         printHello("Hello JavaSE", 11);
 
-        // Q2の実行
-        multiply(3, 5);
+        // Q2の実行（整数：掛け算）
+        multiply(3, 5);    // → 15
 
         // Q3の実行
         int[] sampleArray = {1, 2, 3, 4, 5};
         printArray(sampleArray);
 
-        // Q4の実行
-        add(3.5, 4.2);
+        // Q4の実行（小数：足し算）※オーバーロード
+        multiply(3.5, 4.2); // → 7.7
 
         // Q5の実行（乱数を5回生成）
         int[] randomNums = generateRandomNumbers(5);
