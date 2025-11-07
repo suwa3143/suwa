@@ -1,52 +1,23 @@
 package model;
 
-// 動物の情報を保持するクラス
 public class Animal {
-    private String name;     // 動物名
-    private double length;   // 体長（m）
-    private int speed;       // 速度（km/h）
-    private String scientificName; // 学名
+    private String name;
+    private double length;
+    private int speed;
+    private String scientificName;
 
-    // コンストラクタ
-    public Animal(String name, double length, int speed) {
+    public Animal(String name, double length, int speed, String scientificName) {
         this.name = name;
         this.length = length;
         this.speed = speed;
-        this.scientificName = getScientificNameByName(name);
+        this.scientificName = scientificName;
     }
 
-    // 学名を動物名に応じて返すメソッド
-    private String getScientificNameByName(String name) {
-        switch (name) {
-            case "ライオン":
-                return "パンテラ レオ";
-            case "ゾウ":
-                return "ロキソドンタ・サイクロティス";
-            case "パンダ":
-                return "アイルロポダ・メラノレウカ";
-            case "チンパンジー":
-                return "パン・トゥログロディテス";
-            case "シマウマ":
-                return "チャップマンシマウマ";
-            default:
-                return "不明";
-        }
-    }
-
-    // getter
-    public String getName() {
-        return name;
-    }
-
-    public double getLength() {
-        return length;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public String getScientificName() {
-        return scientificName;
+    public void printInfo() {
+        System.out.println("動物名：" + name);
+        System.out.println("体長：" + length + "m");
+        System.out.println("速度：" + speed + "km/h");
+        System.out.println("学名：" + scientificName);
+        System.out.println();
     }
 }

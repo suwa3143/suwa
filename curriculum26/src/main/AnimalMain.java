@@ -9,25 +9,64 @@ public class AnimalMain {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("コンソールに文字を入力してください");
-        String input = scanner.nextLine(); 
-        // 例: ライオン:2.1:80,ゾウ:3.2:40,パンダ:1.9:30,...
+        // 入力例：ライオン:2.1:80,ゾウ:3.2:40
+        String input = scanner.nextLine();
 
-        // カンマで区切って1匹ずつ処理
-        String[] animalsData = input.split(",");
+        // 複数の動物を分割
+        String[] animals = input.split(",");
 
-        for (String data : animalsData) {
+        for (String data : animals) {
             String[] parts = data.split(":");
+
+            // 3つ未満ならエラー文を出力して終了
+            if (parts.length < 3) {
+                System.out.println("入力データが不完全です。形式は『動物名:体長:速度』で入力してください。");
+                System.out.println("例）ライオン:2.1:80,ゾウ:3.2:40");
+                scanner.close();
+                return; // プログラム終了
+            }
+
             String name = parts[0];
-            double length = Double.parseDouble(parts[1]);
-            int speed = Integer.parseInt(parts[2]);
+            double length = 0;
+            int speed = 0;
 
-            Animal animal = new Animal(name, length, speed);
+            try {
+                length = Double.parseDouble(parts[1]);
+                speed = Integer.parseInt(parts[2]);
+            } catch (NumberFormatException e) {
+                System.out.println("数値の形式が不完全です：" + data);
+                scanner.close();
+                return;
+            }
 
-            // 出力
-            System.out.println("\n動物名：" + animal.getName());
-            System.out.println("体長：" + animal.getLength() + "m");
-            System.out.println("速度：" + animal.getSpeed() + "km/h");
-            System.out.println("学名：" + animal.getScientificName());
+            String scientificName;
+
+            // switch文の表記を「:」に統一
+            switch (name) {
+                case "ライオン":
+                    scientificName = "パンテラ・レオ";
+                    break;
+                case "ゾウ":
+                    scientificName = "ロキソドンタ・サイクロティス";
+                    break;
+                case "パンダ":
+                    scientificName = "アイルロポダ・メラノレウカ";
+                    break;
+                case "チンパンジー":
+                    scientificName = "パン・トゥログロディテス";
+                    break;
+                case "シマウマ":
+                    scientificName = "チャップマンシマウマ";
+                    break;
+                case "インコ":
+                    scientificName = "不明";
+                    break;
+                default:
+                    scientificName = "不明";
+            }
+
+            Animal animal = new Animal(name, length, speed, scientificName);
+            animal.printInfo();
         }
 
         scanner.close();
