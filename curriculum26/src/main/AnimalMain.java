@@ -35,7 +35,6 @@ public class AnimalMain {
                 speed = Integer.parseInt(parts[2]);
             } catch (NumberFormatException e) {
                 System.out.println("数値の形式が不完全です：" + data);
-                scanner.close();
                 return;
             }
 
@@ -57,9 +56,6 @@ public class AnimalMain {
                     break;
                 case "シマウマ":
                     scientificName = "チャップマンシマウマ";
-                    break;
-                case "インコ":
-                    scientificName = "不明";
                     break;
                 default:
                     scientificName = "不明";
