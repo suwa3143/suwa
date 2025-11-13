@@ -22,7 +22,6 @@ public class AnimalMain {
             if (parts.length < 3) {
                 System.out.println("入力データが不完全です。形式は『動物名:体長:速度』で入力してください。");
                 System.out.println("例）ライオン:2.1:80,ゾウ:3.2:40");
-                scanner.close();
                 return; // プログラム終了
             }
 
@@ -35,7 +34,7 @@ public class AnimalMain {
                 speed = Integer.parseInt(parts[2]);
             } catch (NumberFormatException e) {
                 System.out.println("数値の形式が不完全です：" + data);
-                return;
+                continue;
             }
 
             String scientificName;
